@@ -1,15 +1,14 @@
 package seleniumTest;
 
 import ChromeBrowser.SeleniumBrowserSetup;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS;
 
@@ -23,6 +22,8 @@ public class automatedTestDemo {
     public static void beforeAll(){
 
         driver = chrome.openBrowser();
+        //Setting page to open
+        driver.get("https://the-internet.herokuapp.com");
     }
 
     @AfterAll
@@ -32,17 +33,17 @@ public class automatedTestDemo {
     }
 
     @Test
-    public void openPageGetTitle(){
+    @DisplayName("Open Browser, Enter URL, Get URL Title")
+    public void openPageGetTitle() throws InterruptedException {
 
         String expectedTitle = "The Internet";
 
-        //Setting page to open
-        driver.get("https://the-internet.herokuapp.com");
-
+        Thread.sleep(200);
         assertEquals(expectedTitle, driver.getTitle());
     }
 
     @Test
+    @DisplayName("Adding button, then checking button names")
     public void addRemoveElements() throws InterruptedException {
 
         String addElement = "Add Element";
@@ -63,5 +64,22 @@ public class automatedTestDemo {
 
         assertEquals(addElement, addButton.getText());
         assertEquals(remElement, remButton.getText());
+    }
+
+    @Test
+    @DisplayName("Verify number of delete buttons (5)")
+    public void countButtons() throws InterruptedException {
+        int buttonCount = 0;
+        WebElement addButton = driver.findElement(By.xpath("//div[@class='example']/button[@onclick='addElement()']"));
+        for(int i = 0; i<4; i++){
+            addButton.click();
+        }
+
+        Thread.sleep(200);
+
+        List<WebElement> delButtons = driver.findElements(By.xpath("//div[@id='elements']/button[@onclick='deleteElement()']"));
+        buttonCount = delButtons.size();
+
+        assertEquals(5,buttonCount);
     }
 }

@@ -33,7 +33,7 @@ public class alertTesting {
 
     @Test
     @DisplayName("Attempting to dismiss alert")
-    public void alertTest() throws InterruptedException {
+    public void alertTest() {
 
         WebElement link = driver.findElement(By.linkText("Context Menu"));
         Actions actions = new Actions(driver);

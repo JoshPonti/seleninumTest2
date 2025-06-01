@@ -5,6 +5,8 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.openqa.selenium.*;
 
 import java.time.Duration;
@@ -18,7 +20,6 @@ public class basicAuthTest {
     public static void beforeAll(){
 
         driver = chrome.openBrowser();
-        //driver.get("https://the-internet.herokuapp.com");
     }
 
     @AfterAll
@@ -27,13 +28,12 @@ public class basicAuthTest {
         driver.quit();
     }
 
-    @Test
+    @ParameterizedTest
+    @CsvSource(value = {"admin,admin"})
     @DisplayName("Basic Authentification Test")
-    public void basicAuth(){
+    public void basicAuth(String user, String pass){
 
-    String user, pass, url, domain;
-    user = "admin";
-    pass = "admin";
+    String url, domain;
     domain = "the-internet.herokuapp.com/basic_auth";
     url = "https://"+user+":"+pass+"@"+domain;
 

@@ -10,8 +10,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 public class dragAndDropTest {
 
     private static SeleniumBrowserSetup chrome = new SeleniumBrowserSetup();

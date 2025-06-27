@@ -1,4 +1,4 @@
-package seleniumTest;
+package seleniumTests;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS;
  * This is only here to test in parallel
  */
 @TestInstance(PER_CLASS)
-public class assertionTesting {
+public class assertionTest {
     /*
     @Test
     @DisplayName("Fail Assert")

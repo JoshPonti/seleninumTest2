@@ -1,10 +1,9 @@
-package seleniumTest;
+package seleniumTests;
 
-import ChromeBrowser.SeleniumBrowserSetup;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import testSetup.testSetup;
 
 import java.util.List;
 
@@ -12,24 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS;
 
 @TestInstance(PER_CLASS)
-public class automatedTestDemo {
-
-    private static SeleniumBrowserSetup chrome = new SeleniumBrowserSetup();
-    private static WebDriver driver;
-
-    @BeforeAll
-    public static void beforeAll(){
-
-        driver = chrome.setupBrowser();
-        //Setting page to open
-        driver.get("https://the-internet.herokuapp.com");
-    }
-
-    @AfterAll
-    public static void afterAll(){
-
-        driver.quit();
-    }
+public class addRemoveElementTest extends testSetup {
 
     @Test
     @DisplayName("Open Browser, Enter URL, Get URL Title")

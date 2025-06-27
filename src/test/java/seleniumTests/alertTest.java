@@ -1,11 +1,11 @@
-package seleniumTest;
+package seleniumTests;
 
-import ChromeBrowser.SeleniumBrowserSetup;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import testSetup.testSetup;
 
 import java.time.Duration;
 
@@ -13,23 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS;
 
 @TestInstance(PER_CLASS)
-public class alertTesting {
-
-    private static SeleniumBrowserSetup chrome = new SeleniumBrowserSetup();
-    private static WebDriver driver;
-
-    @BeforeAll
-    public static void beforeAll(){
-
-        driver = chrome.setupBrowser();
-        driver.get("https://the-internet.herokuapp.com");
-    }
-
-    @AfterAll
-    public static void afterAll(){
-
-        driver.quit();
-    }
+public class alertTest extends testSetup {
 
     @Test
     @DisplayName("Attempting to dismiss alert")

@@ -1,32 +1,13 @@
-package seleniumTest;
+package seleniumTests;
 
-import ChromeBrowser.SeleniumBrowserSetup;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import testSetup.testSetup;
 
-public class dragAndDropTest {
-
-    private static SeleniumBrowserSetup chrome = new SeleniumBrowserSetup();
-    private static WebDriver driver;
-
-    @BeforeAll
-    public static void beforeAll(){
-
-        driver = chrome.setupBrowser();
-        driver.get("https://the-internet.herokuapp.com");
-    }
-
-    @AfterAll
-    public static void afterAll(){
-
-        driver.quit();
-    }
+public class dragAndDropTest extends testSetup {
 
     @Test
     @DisplayName("Drag and Drop")

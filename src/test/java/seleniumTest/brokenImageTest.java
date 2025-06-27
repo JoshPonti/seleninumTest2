@@ -6,14 +6,15 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.util.List;
 
-public class dropDownTest {
+import static org.junit.jupiter.api.Assertions.*;
+
+public class brokenImageTest {
 
     private static SeleniumBrowserSetup chrome = new SeleniumBrowserSetup();
     private static WebDriver driver;
@@ -22,7 +23,6 @@ public class dropDownTest {
     public static void beforeAll(){
 
         driver = chrome.setupBrowser();
-        //Setting page to open
         driver.get("https://the-internet.herokuapp.com");
     }
 
@@ -33,22 +33,26 @@ public class dropDownTest {
     }
 
     @Test
-    @DisplayName("Dropdown List")
-    public void dropDownList(){
+    @DisplayName("Broken Image Test")
+    public void imageTest(){
 
-        WebElement link = driver.findElement(By.linkText("Dropdown"));
+        WebElement link = driver.findElement(By.linkText("Broken Images"));
         Actions actions = new Actions(driver);
 
         link.click();
 
-        WebElement dropDown = driver.findElement(By.id("dropdown"));
-        dropDown.click();
-
-        WebElement optionSel = driver.findElement(By.xpath("//div[@class='example']/select[@id='dropdown']/option[@value='2']"));
-        optionSel.click();
-
-        actions.sendKeys(Keys.ESCAPE).perform();
-
-        assertEquals(optionSel.getText(),"Option 2");
+        //Getting list of all images
+        List<WebElement> imgList = driver.findElements(By.tagName("img"));
+        //System.out.println(imgList);
+        for(WebElement img : imgList){
+            if (img.getAttribute("naturalWidth").equals("0")){
+                //assertTrue(img.getAttribute("naturalWidth").equals("0"));
+                System.out.println(img + " is broken");
+            }
+            else{
+                assertFalse(img.getAttribute("naturalWidth").equals("0"));
+                System.out.println(img + " is not null");
+            }
+        }
     }
 }

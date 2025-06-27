@@ -16,7 +16,7 @@ public class basicAuthTest {
     @BeforeAll
     public static void beforeAll(){
 
-        driver = chrome.openBrowser();
+        driver = chrome.setupBrowser();
     }
 
     @AfterAll

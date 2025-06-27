@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class SeleniumBrowserSetup {
 
-    public WebDriver openBrowser() {
+    public WebDriver setupBrowser() {
 
         //class object
         ChromeOptions co = new ChromeOptions();

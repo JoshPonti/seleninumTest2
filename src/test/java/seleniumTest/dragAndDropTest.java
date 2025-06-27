@@ -18,7 +18,7 @@ public class dragAndDropTest {
     @BeforeAll
     public static void beforeAll(){
 
-        driver = chrome.openBrowser();
+        driver = chrome.setupBrowser();
         driver.get("https://the-internet.herokuapp.com");
     }
 

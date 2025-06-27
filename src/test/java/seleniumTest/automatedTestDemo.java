@@ -20,7 +20,7 @@ public class automatedTestDemo {
     @BeforeAll
     public static void beforeAll(){
 
-        driver = chrome.openBrowser();
+        driver = chrome.setupBrowser();
         //Setting page to open
         driver.get("https://the-internet.herokuapp.com");
     }
